@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Child IPC Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Multi-Child IPC Simulator</h1>
+    <p>Bidirectional Inter-Process Communication Using Pipes</p>
+</header>
+
+<main>
+    <section class="visualization">
+        <h2>Live IPC Communication Flow</h2>
+        <p class="subtitle">Parent Process communicating with three Child Processes</p>
+
+        <div class="parent-box">
+            <h2>Parent Process</h2>
+            <p>Controls and manages communication</p>
+        </div>
+
+       
+<div class="connections">
+    <div class="connection" id="pipe1">
+        <div class="pipe-label">Child 1 Pipe</div>
+        <div class="pipe-track">
+            <span class="packet down"></span>
+            <span class="packet up"></span>
+        </div>
+    </div>
+
+    <div class="connection" id="pipe2">
+        <div class="pipe-label">Child 2 Pipe</div>
+        <div class="pipe-track">
+            <span class="packet down"></span>
+            <span class="packet up"></span>
+        </div>
+    </div>
+
+    <div class="connection" id="pipe3">
+        <div class="pipe-label">Child 3 Pipe</div>
+        <div class="pipe-track">
+            <span class="packet down"></span>
+            <span class="packet up"></span>
+        </div>
+    </div>
+</div>
+
+        <div class="children">
+            <div class="child" id="child1">
+                <h3>Child 1</h3>
+                <p>Addition & Subtraction</p>
+                <input type="number" id="a1" placeholder="First number">
+                <input type="number" id="b1" placeholder="Second number">
+                <select id="op1">
+                    <option value="add">Addition (+)</option>
+                    <option value="subtract">Subtraction (-)</option>
+                </select>
+                <button onclick="calculate(1)">Send Request</button>
+                <p class="result" id="result1">Waiting for request...</p>
+            </div>
+
+            <div class="child" id="child2">
+                <h3>Child 2</h3>
+                <p>Multiplication & Division</p>
+                <input type="number" id="a2" placeholder="First number">
+                <input type="number" id="b2" placeholder="Second number">
+                <select id="op2">
+                    <option value="multiply">Multiplication (*)</option>
+                    <option value="divide">Division (/)</option>
+                </select>
+                <button onclick="calculate(2)">Send Request</button>
+                <p class="result" id="result2">Waiting for request...</p>
+            </div>
+
+            <div class="child" id="child3">
+                <h3>Child 3</h3>
+                <p>Text Communication</p>
+                <input type="text" id="message" placeholder="Enter a message">
+                <button onclick="sendMessage()">Send Message</button>
+                <p class="result" id="result3">Waiting for message...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="log">
+        <h2>Communication Log</h2>
+        <div id="logs">No communication yet.</div>
+    </section>
+</main>
+
+<footer>
+    <p>Multi-Child IPC Project | Operating Systems</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

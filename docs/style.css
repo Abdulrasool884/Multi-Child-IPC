@@ -1,0 +1,300 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b1120;
+    color: #f8fafc;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    padding: 30px 15px;
+    background: #172554;
+    border-bottom: 2px solid #38bdf8;
+}
+
+header h1 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+header p, .subtitle {
+    color: #cbd5e1;
+}
+
+main {
+    max-width: 1150px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+.visualization {
+    text-align: center;
+}
+
+.visualization > h2 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    margin-bottom: 30px;
+}
+
+.parent-box {
+    background: #1e40af;
+    border: 2px solid #60a5fa;
+    border-radius: 12px;
+    padding: 22px;
+    max-width: 450px;
+    margin: auto;
+    box-shadow: 0 0 20px #2563eb30;
+}
+
+.parent-box p {
+    margin-top: 8px;
+    color: #dbeafe;
+}
+
+.connections {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.connection {
+    padding: 15px 0;
+}
+
+.pipe-label {
+    color: #7dd3fc;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.arrows {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.down-arrow {
+    color: #38bdf8;
+}
+
+.up-arrow {
+    color: #4ade80;
+}
+
+.children {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.child {
+    background: #172033;
+    border: 2px solid #475569;
+    border-radius: 12px;
+    padding: 22px 15px;
+    transition: 0.3s;
+}
+
+.child.active {
+    border-color: #38bdf8;
+    box-shadow: 0 0 22px #38bdf855;
+}
+
+.child h3 {
+    color: #38bdf8;
+    margin-bottom: 10px;
+}
+
+.child > p {
+    color: #cbd5e1;
+    margin-bottom: 12px;
+}
+
+.child input, .child select {
+    width: 100%;
+    padding: 11px;
+    margin-top: 10px;
+    border-radius: 6px;
+    border: 1px solid #64748b;
+    background: #f8fafc;
+    color: #0f172a;
+}
+
+.child button {
+    width: 100%;
+    padding: 11px;
+    margin-top: 12px;
+    background: #0284c7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.child button:hover {
+    background: #0369a1;
+}
+
+.result {
+    margin-top: 15px;
+    color: #4ade80 !important;
+    overflow-wrap: anywhere;
+}
+
+.log {
+    margin-top: 40px;
+    padding: 25px;
+    background: #172033;
+    border: 1px solid #334155;
+    border-radius: 12px;
+}
+
+.log h2 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+#logs p {
+    padding: 12px;
+    margin-top: 8px;
+    background: #263449;
+    border-radius: 6px;
+    color: #e2e8f0;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #94a3b8;
+}
+
+@media (max-width: 750px) {
+    .children {
+        grid-template-columns: 1fr;
+    }
+
+    .connections {
+        gap: 5px;
+    }
+
+    .pipe-label {
+        font-size: 10px;
+    }
+}
+
+
+.pipe-track {
+    height: 75px;
+    width: 5px;
+    background: #475569;
+    margin: 8px auto;
+    position: relative;
+    border-radius: 5px;
+}
+
+.packet {
+    display: none;
+    position: absolute;
+    left: -7px;
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.packet.down {
+    background: #38bdf8;
+    box-shadow: 0 0 18px 5px #38bdf8;
+}
+
+.packet.up {
+    background: #4ade80;
+    box-shadow: 0 0 18px 5px #4ade80;
+}
+
+.connection.sending .packet.down {
+    display: block;
+    animation: travelDown 1.5s ease-in-out forwards;
+}
+
+.connection.returning .packet.up {
+    display: block;
+    animation: travelUp 1.5s ease-in-out forwards;
+}
+
+.connection.sending .pipe-track {
+    background: #38bdf8;
+    box-shadow: 0 0 12px #38bdf8;
+}
+
+.connection.returning .pipe-track {
+    background: #4ade80;
+    box-shadow: 0 0 12px #4ade80;
+}
+
+@keyframes travelDown {
+    from { top: 0; }
+    to { top: 60px; }
+}
+
+@keyframes travelUp {
+    from { top: 60px; }
+    to { top: 0; }
+}
+
+
+.packet {
+    display: none;
+    position: absolute;
+    left: -6px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+.packet.down {
+    background: #38bdf8;
+    box-shadow: 0 0 15px #38bdf8;
+}
+
+.packet.up {
+    background: #4ade80;
+    box-shadow: 0 0 15px #4ade80;
+}
+
+.connection.sending .packet.down {
+    display: block;
+    animation: travelDown 0.7s linear forwards;
+}
+
+.connection.returning .packet.up {
+    display: block;
+    animation: travelUp 0.7s linear forwards;
+}
+
+@keyframes travelDown {
+    from { top: 0; }
+    to { top: 60px; }
+}
+
+@keyframes travelUp {
+    from { top: 60px; }
+    to { top: 0; }
+}
